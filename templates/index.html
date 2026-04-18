@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ developer.name }} — Developer Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="profile-header">
+            <div class="avatar">{{ developer.name[0] }}</div>
+            <h1>{{ developer.name }}</h1>
+            <p class="role">{{ developer.role }}</p>
+            <p class="location">📍 {{ developer.location }}</p>
+            <p class="bio">{{ developer.bio }}</p>
+            <div class="contact-links">
+                <a href="mailto:{{ developer.email }}">✉ {{ developer.email }}</a>
+                <a href="{{ developer.github }}" target="_blank">GitHub</a>
+                <a href="{{ developer.linkedin }}" target="_blank">LinkedIn</a>
+            </div>
+        </header>
+
+        <section class="skills-section">
+            <h2>Skills</h2>
+            <div class="skills">
+                {% for skill in developer.skills %}
+                <span class="skill-tag">{{ skill }}</span>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="projects-section">
+            <h2>Projects</h2>
+            <div class="projects">
+                {% for project in developer.projects %}
+                <div class="project-card">
+                    <h3>{{ project.name }}</h3>
+                    <p>{{ project.description }}</p>
+                    <span class="tech-stack">{{ project.tech }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+</body>
+</html>
